@@ -190,7 +190,7 @@ void MVKOcclusionQueryPool::beginQueryAddedTo(uint32_t query, MVKCommandBuffer* 
     NSUInteger offset = getVisibilityResultOffset(query);
     NSUInteger maxOffset = getDevice()->_pMetalFeatures->maxQueryBufferSize - kMVKQuerySlotSizeInBytes;
     if (offset > maxOffset) {
-        cmdBuffer->recordResult(mvkNotifyErrorWithText(VK_ERROR_OUT_OF_DEVICE_MEMORY, "vkCmdBeginQuery(): The query offset value %lu is larger than the maximum offset value %lu available on this device.", offset, maxOffset));
+        cmdBuffer->recordResult(mvkNotifyErrorWithText(VK_ERROR_OUT_OF_DEVICE_MEMORY, "vkCmdBeginQuery(): The query offset value %lu is larger than the maximum offset value %lu available on this device.", (unsigned long)offset, (unsigned long)maxOffset));
     }
 
     if (cmdBuffer->_initialVisibilityResultMTLBuffer == nil) {

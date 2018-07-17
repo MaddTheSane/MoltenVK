@@ -547,6 +547,7 @@
 				A9F55D2E198BE6A7004EC31B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		A9F55D2E198BE6A7004EC31B /* Products */ = {
 			isa = PBXGroup;
@@ -806,7 +807,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nexport MVK_PROD_NAME=\"MoltenVK\"\nexport MVK_DYLIB_NAME=\"lib${MVK_PROD_NAME}.dylib\"\nexport MVK_BUILT_PROD_PATH=\"${BUILT_PRODUCTS_DIR}\"\nexport MVK_SYS_FWK_DIR=\"${SDK_DIR}/System/Library/Frameworks\"\nexport MVK_USR_LIB_DIR=\"${SDK_DIR}/usr/lib\"\n\nclang \\\n-dynamiclib \\\n-arch x86_64 \\\n-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} \\\n-compatibility_version 1.0.0 -current_version 1.0.0  \\\n-install_name \"@rpath/${MVK_DYLIB_NAME}\"  \\\n-Wno-incompatible-sysroot \\\n-isysroot ${SDK_DIR} \\\n-iframework ${MVK_SYS_FWK_DIR}  \\\n-framework Metal -framework IOSurface -framework IOKit -framework QuartzCore -framework Foundation \\\n--library-directory ${MVK_USR_LIB_DIR} \\\n-lSystem  -lc++ \\\n-o \"${MVK_BUILT_PROD_PATH}/${MVK_DYLIB_NAME}\" \\\n-force_load \"${MVK_BUILT_PROD_PATH}/${MVK_PROD_NAME}.framework/${MVK_PROD_NAME}\"\n";
+			shellScript = "set -e\n\nexport MVK_PROD_NAME=\"MoltenVK\"\nexport MVK_DYLIB_NAME=\"lib${MVK_PROD_NAME}.dylib\"\nexport MVK_BUILT_PROD_PATH=\"${BUILT_PRODUCTS_DIR}\"\nexport MVK_SYS_FWK_DIR=\"${SDK_DIR}/System/Library/Frameworks\"\nexport MVK_USR_LIB_DIR=\"${SDK_DIR}/usr/lib\"\n\nclang \\\n-dynamiclib \\\n-arch x86_64 \\\n-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} \\\n-compatibility_version 1.0.0 -current_version 1.0.0  \\\n-install_name \"@rpath/${MVK_DYLIB_NAME}\"  \\\n-Wno-incompatible-sysroot \\\n-isysroot ${SDK_DIR} \\\n-iframework ${MVK_SYS_FWK_DIR}  \\\n-framework Metal -framework IOSurface -framework IOKit -framework QuartzCore -framework Foundation \\\n--library-directory ${MVK_USR_LIB_DIR} \\\n-lSystem  -lc++ \\\n-o \"${MVK_BUILT_PROD_PATH}/${MVK_DYLIB_NAME}\" \\\n-force_load \"${MVK_BUILT_PROD_PATH}/${MVK_PROD_NAME}.framework/${MVK_PROD_NAME}\" -arch x86_64 -arch i386\n";
 		};
 		A9731FAD1EDDAE39006B7298 /* Create Dynamic Library */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -960,18 +961,18 @@
 		A9CBEDFF1B6299D800E45FDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				SDKROOT = macosx;
-				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
 		A9CBEE001B6299D800E45FDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				SDKROOT = macosx;
-				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};

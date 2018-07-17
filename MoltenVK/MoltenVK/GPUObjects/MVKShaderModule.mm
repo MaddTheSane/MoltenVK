@@ -128,7 +128,7 @@ MVKShaderLibrary::MVKShaderLibrary(MVKDevice* device,
         NSError* err = nil;
         _mtlLibrary = [getMTLDevice() newLibraryWithData: shdrData error: &err];    // retained
         handleCompilationError(err, "Compiled shader module creation");
-        [shdrData release];
+        dispatch_release(shdrData);
     }
     _device->addActivityPerformance(_device->_performanceStatistics.shaderCompilation.mslLoad, startTime);
 }
